@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width:200px;
+				height:200px;
+				background:red;
+				margin-top: 50px;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="按钮" />
+		<div></div>
+		<script type="text/javascript">
+			var oDiv=document.querySelector("div");
+			var oBut=document.querySelector("input");
+			
+			console.log(oBut);
+			oBut.addEventListener("click",function(){
+				move(oDiv,10,100)
+			});
+			
+			
+			
+			function move(obj,speed,aa){
+				var timer=null;
+				clearInterval(timer);
+				timer=setInterval(function(){
+					if (obj.offsetLeft>=aa) {
+						clearInterval(timer);
+					} else{
+						obj.style.left=obj.offsetLeft+speed+"px";
+					};
+				},30);
+			};
+		</script>
+	</body>
+</html>

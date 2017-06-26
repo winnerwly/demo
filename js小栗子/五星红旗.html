@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box {
+				width: 600px;
+				margin: 50px auto;
+			}
+			
+			canvas {
+				width: 600px;
+				height: 360px;
+				background-color: #e30212;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="box">
+			<canvas></canvas>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var canvas = document.querySelector("canvas");
+
+		canvas.width = 600;
+		canvas.height = 360;
+		var context = canvas.getContext("2d");
+
+		function drawStar(x, y, r1, r2, d) {
+			/*内圆*/
+			//context.beginPath();
+			//context.arc(x, y, r1, 0, Math.PI * 2, true);
+			//context.stroke();
+
+			/*外圆*/
+			//context.beginPath();
+			//context.arc(x, y, r2, 0, Math.PI * 2, true);
+			//context.stroke();
+
+			context.beginPath();
+			for(var i = 0; i < 5; i++) {
+				context.lineTo(Math.cos((18 + i * 72 + d) / 180 * Math.PI) * r2 + x, -1 * Math.sin((18 + i * 72 + d) / 180 * Math.PI) * r2 + y);
+				context.lineTo(Math.cos((54 + i * 72 + d) / 180 * Math.PI) * r1 + x, -1 * Math.sin((54 + i * 72 + d) / 180 * Math.PI) * r1 + y);
+			}
+			context.closePath();
+			context.fillStyle = "#e8f10a";
+			context.fill();
+			//context.stroke();
+		};
+		drawStar(98,88,23,60,0);
+		drawStar(200,30,8,19,46);
+		drawStar(240,72,8,19,21);
+		drawStar(240,132,8,19,74);
+		drawStar(200,174,8,19,54);
+		
+	</script>
+
+</html>

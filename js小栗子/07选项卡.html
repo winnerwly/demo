@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1 .actuve{
+				background: red;
+				color: #FFFFFF;
+				
+			}
+			#div1 div{
+				width: 200px;
+				height: 200px;
+				background: #CCCCCC;
+				border: 1px solid #999;
+				display: none;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload=function()
+			{
+				var oDiv=document.getElementById('div1')
+				var aBtn=oDiv.getElementsByTagName('input')
+				var aDiv=oDiv.getElementsByTagName('div')
+				
+				for (var i=0;i<aBtn.length;i++)
+				{
+					aBtn[i].index=i;
+					aBtn[i].onmousemove=function()
+					{
+						for (var i=0;i<aBtn.length;i++)
+						{
+							aBtn[i].className='';
+							aDiv[i].style.display='none';
+						}
+						this.className='actuve';
+						aDiv[this.index].style.display='block'
+					};
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			<input class="actuve" type="button" value="招生" />
+			<input type="button" value="简介" />
+			<input type="button" value="数据" />
+			<input type="button" value="语文" />
+			<div style="display: block;">11111</div>
+			<div>22222</div>
+			<div>33333</div>
+			<div>44444</div>
+		</div>
+	</body>
+</html>

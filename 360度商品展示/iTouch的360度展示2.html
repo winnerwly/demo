@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.itouch {
+				width: 640px;
+				height: 378px;
+				border: solid red 1px;
+				margin: 50px auto;
+				position: relative;
+			}
+			
+			.itouch ul {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				width: inherit;
+				height: inherit;
+				position: relative;
+				z-index: -99;
+			}
+			
+			.itouch ul li {
+				width: inherit;
+				height: inherit;
+				display: none;
+			}
+			
+			.itouch ul li img {
+				width: inherit;
+				height: inherit;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="itouch">
+			<ul>
+				<li style="display: block;"><img src="img/iTouch/itouch(0).jpg"></li>
+			</ul>
+		</div>
+		<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var imageCount = 78;
+				for(var i = 1; i < imageCount; i++) {
+					$(".itouch ul").append("<li><img src='img/iTouch/itouch(" + i + ").jpg' /></li>")
+				}
+
+				var images = $(".itouch li");
+				var index = 0;
+				//自动播放
+				var timer = setInterval(function() {
+					images.eq(index).hide();
+					index = (index + 1) % imageCount;
+					images.eq(index).show();
+				}, 50);
+
+				$(".itouch").hover(function() {
+					clearInterval(timer);
+				}, function() {
+					timer = setInterval(function() {
+						images.eq(index).hide();
+						index = (index + 1) % imageCount;
+						images.eq(index).show();
+					}, 50);
+				});
+
+				var flag = false;
+				$(".itouch").on({
+					startX: 0,
+					mousedown: function(e) {
+						flag = true;
+						this.startX = e.clientX;
+					},
+					mousemove: function(e) {
+						var x = e.clientX;
+						if(flag) {
+							if(x < this.startX) {
+								images.eq(index).hide();
+								index = (index + 1) % imageCount;
+								index = (index + 1) % imageCount;
+								images.eq(index).show();
+							} else {
+								images.eq(index).hide();
+								index = (index + imageCount - 1) % imageCount;
+								index = (index + imageCount - 1) % imageCount;
+								images.eq(index).show();
+							}
+							this.startX = x;
+						}
+					},
+					mouseleave: function() {
+						console.log("3");
+						flag = false;
+					},
+					mouseup: function() {
+						flag = false;
+					}
+
+				});
+
+			});
+		</script>
+	</body>
+
+</html>

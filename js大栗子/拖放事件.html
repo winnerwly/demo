@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#p{
+				height: 20px;
+				width: auto;
+			}
+			#div{
+				width: 300px;
+				height: 300px;
+				border: 3px #ccc dotted;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="p" draggable="true">这只是一个被拖放的元素</div>
+		<div id="div">
+		132
+		
+		</div>
+		<script type="text/javascript">
+			var oDiv=document.querySelector("#div");
+			var oP=document.querySelector("#p");
+			
+			
+			oDiv.ondragover=function(e){
+				e.preventDefault();
+				this.style.borderColor = "gray";
+			};
+			oDiv.ondrop=function(){
+				this.appendChild(oP);
+			};
+		</script>
+	</body>
+</html>

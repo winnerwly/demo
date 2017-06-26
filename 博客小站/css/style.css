@@ -1,0 +1,257 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background: #e2e2e2;
+	font-family: "微软雅黑";
+}
+a{
+	color: #1982d1;
+	text-decoration: none;
+}
+.div00{
+	background: #fff;
+	margin: 30px auto;
+	width: 1000px;
+	border-top: 2px #ddd solid;
+}
+header{
+	height: 164px;
+}
+header img{
+	width: 100px;
+	height: 100px;
+	float: left;
+	margin-left: 76px;
+	border-radius: 50%;
+	margin-top: 32px;
+}
+header div h1{
+	font-size: 28px;
+	color: #111;
+}
+#name{
+	float: left;
+	margin-top: 59px;
+	margin-left: 10px;
+}
+#name p,#name  p a{
+		font-size: 14px;
+		color:#7a7a7a;
+	}
+header .sousuo input{
+	float: right;
+	margin-right: 76px;
+	margin-top: 57px;
+	width: 112px;
+	height: 32px;
+	box-sizing: border-box;
+	font-size: 14px;
+	padding-left: 28px;
+	border: 1px #ccc solid;
+	border-radius: 3px;
+}
+.sousuo input{
+	width: 112px;
+	height: 32px;
+	box-sizing: border-box;
+	font-size: 14px;
+	padding-left: 28px;
+	border: 1px #ccc solid;
+	border-radius: 3px;
+}
+body #img{
+	width: 1000px;
+	height: 288px;
+	background: url(../img/tp.jpg);
+	background-repeat: no-repeat;
+	background-size: 1000px;
+	background-position:0 -134px;
+}
+nav{
+	height: 43px;
+	background: #1c1c1c;
+}
+nav ul{
+	margin-left: 76px;
+}
+nav ul li{
+	list-style: none;
+	float: left;
+	font-size: 12px;
+	line-height: 43px;
+}
+nav ul li a{
+	color: #FFFFFF;
+	line-height: 30px;
+	display: inline-block;
+	width: 120px;
+	height: 30px;
+	text-align: center;
+	margin-right: 10px;
+	border-radius: 15px;
+	transition: all 0.5s;
+}
+nav ul li a:hover{
+	background-color: #E2E2E2;
+	color: #1C1C1C;
+}
+#two:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+#left{
+	margin-left: 76px;
+	float: left;
+}
+#left .sousuo{
+	margin-top: 30px;
+}
+#left .sousuo input{
+	width: 184px;
+}
+#weibo{
+	margin-top: 30px;
+}
+#weibo p{
+	font-size: 12px;
+	color: #666;
+}
+#weibo #geren{
+	width: 190px;
+	border: 1px #CCCCCC solid;
+}
+#weibo #geren #a1{
+	background: url(../img/tp2.png);
+	background-repeat: no-repeat;
+	background-size: 20px;
+	height: 30px;
+	border-bottom: 1px #CCCCCC solid;
+	background-position: 5px 7px;
+}
+#a1 span{
+	font-size: 14px;
+	line-height: 30px;
+	display: inline-block;
+	margin-left: 30px;
+}
+#a2{
+	height: 87px;
+}
+#a2 img{
+	width: 70px;
+	height: 70px;
+	float: left;
+	margin-top: 10px;
+	/*: 0 25px;*/
+}
+#ab1{
+	font-size: 12px;
+	padding: 14px 0;
+}
+#ab1 a{
+	font-size: 14px;
+}
+#ab2 a{
+	display: block;
+	width: 120px;
+	height: 23px;
+	background: #f00;
+	color: #fff;
+	text-align: center;
+	line-height:23px ;
+	font-size: 12px;
+}
+#ab2 a{
+	color: #FFFFFF;
+}
+#ab2 a:hover{
+	color: #111111;
+	background: #1982D1;
+}
+#a3{
+	margin-top: 30px;
+}
+#a3 li{
+	list-style: none;
+	margin-bottom: 5px;
+	font-size: 14px;
+}
+#right{
+	float: right;
+	margin-right: 76px;
+}
+#right ul:last-child{
+	border-bottom: 1px solid rgba(1,1,1,0);
+}
+.wenzhang{
+	margin-top: 30px;
+	width: 586px;
+	border-bottom: 1px #DDDDDD solid;
+}
+.wenzhang li{
+	list-style: none;
+}
+.wenzhang li h1{
+	display: inline-block;
+	margin-bottom: 20px;
+}
+.wenzhang li img{
+	float: right;
+}
+.li1{
+	font-size: 12px;
+	margin-bottom: 30px;
+}
+.li2{
+	font-size: 16px;
+	margin-bottom: 30px;
+}
+.li2 p{
+	width: 405px;
+	height: 18px;
+	display: inline-block;
+	overflow: hidden;
+}
+.li3{
+	font-size: 12px;
+	margin-bottom: 26px;
+}
+footer{
+	height: 80px;
+	font-size: 14px;
+	line-height: 80px;
+	text-align: center;
+	border-top: 2px #CCCCCC solid;
+}
+#position{
+				font-size: 20px;
+				/*width: 30px;*/
+				/*height: 30px;*/
+				/*background-color:red;*/
+				/*color: #FFFFFF;*/
+				position: fixed;
+				right: 100px;
+				bottom: 80px;
+				/*line-height:30px;*/
+				/*text-align: center;*/
+			}
+			#position a{
+				color: #fff;
+				display: block;
+				width: 20px;
+				height: 21px;
+				background: url(../img/top1.png) no-repeat;
+				/*background-size: 20px;*/
+				
+				}
+				#position a:hover{
+					background: url(../img/top1.png) no-repeat;
+					background-position-y: -90px;
+					}
+				#position a:active{
+					background: url(../img/top1.png) no-repeat;
+					background-position-y:-42px
+				}	

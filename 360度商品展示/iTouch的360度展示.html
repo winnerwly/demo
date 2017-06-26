@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.itouch {
+				width: 640px;
+				height: 378px;
+				border: solid red 1px;
+				margin: 50px auto;
+				position: relative;
+			}
+			
+			.itouch ul {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				width: inherit;
+				height: inherit;
+				position: relative;
+				z-index: -99;
+			}
+			
+			.itouch ul li {
+				width: inherit;
+				height: inherit;
+				display: none;
+			}
+			
+			.itouch ul li img {
+				width: inherit;
+				height: inherit;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="itouch">
+			<ul>
+				<li style="display: block;"><img src="img/iTouch/itouch(0).jpg"></li>
+			</ul>
+		</div>
+		<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var imageCount = 78;
+				for(var i = 1; i < imageCount; i++) {
+					$(".itouch ul").append("<li><img src='img/iTouch/itouch(" + i + ").jpg' /></li>")
+				}
+
+				var images = $(".itouch li");
+				var index = 0;
+				//自动播放
+				var timer = setInterval(function() {
+					images.eq(index).hide();
+					index = (index + 1) % imageCount;
+					images.eq(index).show();
+				}, 50);
+
+				// 鼠标悬停 暂停播放
+				$(".itouch").hover(function() {
+					clearInterval(timer);
+				}, function() {
+					timer = setInterval(function() {
+						images.eq(index).hide();
+						index = (index + 1) % imageCount;
+						images.eq(index).show();
+					}, 50);
+				});
+				// 是否可以拖动标志
+				var flag = false;
+				// 鼠标事件
+				$(".itouch").on({
+					startX: 0,
+					// 鼠标按下去的
+					mousedown: function(e) {
+						flag = true;
+						this.startX = e.clientX;
+					},
+					// 鼠标移动
+					mousemove: function(e) {
+						x = e.clientX;
+						if(flag) {
+							if(this.startX > x) {
+								images.eq(index).hide();
+								index = (index + 1) % imageCount;
+								index = (index + 1) % imageCount;//写两次的目的是为了加速旋转
+								images.eq(index).show();
+							} else {
+								images.eq(index).hide();
+								index = (index + imageCount - 1) % imageCount;
+								index = (index + imageCount - 1) % imageCount;
+								images.eq(index).show();
+							}
+							this.startX = x;
+						}
+					},
+					// 鼠标松开
+					mouseup: function() {
+						// 不可以拖动
+						flag = false;
+					},
+					// 鼠标离开
+					mouseleave: function() {
+						// 不可以拖动
+						flag = false;
+					}
+				});
+
+			});
+		</script>
+	</body>
+
+</html>

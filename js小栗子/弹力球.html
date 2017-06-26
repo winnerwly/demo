@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			div{
+				width: 100px;
+				height: 100px;
+				border-radius:50% ;
+				background: red;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script type="text/javascript">
+			var box=document.getElementById('box');
+			var hi=document.documentElement.clientHeight;
+			var wi=document.documentElement.clientWidth;
+			hi1=hi-100;
+			wi1=wi-100;
+//			alert(hi1);
+			xs=0;
+			xv=10;
+			ys=0;
+			yv=10;
+			setInterval(function  () {
+				ys+=yv;
+				if (ys>=hi1) {
+					ys=hi1;
+					yv=-yv
+				};
+				
+				if (ys<=0) {
+				yv=-yv	
+				}
+				box.style.top=ys+'px';
+				
+				//
+				xs+=xv;
+				if (xs>=wi1) {
+					xs=wi1;
+					xv=-xv
+				};
+				
+				if (xs<=0) {
+				xv=-xv	
+				}
+				box.style.left=xs+'px';
+				
+			},12)
+		</script>
+	</body>
+</html>

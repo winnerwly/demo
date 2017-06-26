@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script>
+			var obj = new Array();
+
+			for(var i = 0; i < 100; i++) {
+				aa = Math.round(Math.random() * 100);
+				bb = Math.round(Math.random() * 100);
+				cc = Math.round(Math.random() * 1000);
+				dd = Math.round(Math.random() * 1000);
+				//					drawStar(cc, dd, aa/2.2, aa, bb)
+				obj[i] = [cc, dd, aa / 2.2, aa, bb]
+			};
+//						console.log(obj);
+
+				var str = JSON.stringify(obj);
+				sessionStorage.obj = str;
+				str = sessionStorage.obj;
+				obj = JSON.parse(str);
+			console.log(obj);
+			
+			for (var a=0;a<100;a++) {
+				drawStar(cc, dd, aa/2.2, aa, bb)
+				
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.kaiban-lunbo {
+				height: 21px;
+				width: 1200px;
+				margin: 0 auto;
+				background-color: #eee;
+				position: relative;
+			}
+			
+			.kaiban-lunbo div {
+				width: 90px;
+				height: 21px;
+				background-color: #FFFFFF;
+				position: absolute;
+				z-index: 11;
+				top: 0px;
+				left: 0px;
+			}
+			
+			.kaiban-lunbo ul {
+				padding: 0px;
+				margin: 0px;
+				list-style: none;
+				position: absolute;
+				height: 21px;
+				z-index: 1;
+				width: 4000px;
+				top: 0px;
+				left: 0px;
+			}
+			
+			.kaiban-lunbo ul li {
+				float: left;
+			}
+		</style>
+	</head>
+
+	<body>
+		<input type="checkbox" name="" id="aa" value="1" />
+		<button id="ss">按钮</button>
+		<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
+		<script type="text/javascript">
+				$("#ss").click(function(){
+					if ($("#aa").is(':checked')) {
+						alert(1)
+						
+					} else{
+						alert(3)
+					}
+				});
+//				.animate({left:"值"},3000)
+		</script>
+	</body>
+
+</html>

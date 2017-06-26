@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			div {
+				width: 500px;
+				height: 500px;
+				position: relative;
+				margin: 30px auto;
+			}
+			
+			img {
+				display: block;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+			}
+			
+			img:first-child {
+				width: 500px;
+				height: 500px;
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
+		<script type="text/javascript" src="js/jquery.easing.min.js"></script>
+		<script type="text/javascript" src="js/jquery.rotate.min.js"></script>
+	</head>
+
+	<body>
+		<div>
+			<img src="img/clock.png" />
+			<img id="hour" src="img/hour.png" />
+			<img id="minute" src="img/minute.png" />
+			<img id="second" src="img/second.png" />
+			<img src="img/center.png" />
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+
+				function atime() {
+					var time = new Date();
+					h = time.getHours();
+					h = h < 10 ? '0' + h : h;
+
+					m = time.getMinutes();
+					m = m < 10 ? '0' + m : m;
+
+					s = time.getSeconds();
+					s = s < 10 ? '0' + s : s;
+					document.title = h + "-" + m + "-" + s;
+					$("#second").rotate({
+						angle: (s - 1) * 6, // 起始角度
+						animateTo: s * 6, //目标角度
+						duration: 100, // 动画时长
+						easing: $.easing.easeOutCirc, // 动画的效果
+
+					});
+
+					$("#minute").rotate({
+						angle: m * 6 + s * 0.1, //// 起始角度
+						animateTo: m * 6 + s * 0.1, //目标角度
+
+					});
+
+					$("#hour").rotate({
+						angle: h * 30 + m * 0.5 + (s * 30 / 3600), // 起始角度
+						animateTo: h * 30 + m * 0.5 + (s * 30 / 3600), //目标角度
+
+					});
+
+				};
+
+				atime();
+				setInterval(function() {
+					atime()
+				}, 1000);
+
+			});
+		</script>
+	</body>
+
+</html>

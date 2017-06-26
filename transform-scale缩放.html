@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				margin: 100px auto;
+				width: 80px;
+				height: 80px;
+				background-color: red;
+				-webkit-transform: scale(1,1);
+				-webkit-transition: all 1s;
+			}
+			.box:hover{
+				-webkit-transform: scale(1.8,1.8);
+			}
+			input{
+				display: block;
+				margin-top: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+		</div>
+		<input type="range" name="" id="" value="1" min="0" max="3" step="0.1"/>
+		<script type="text/javascript" src="js/jquery-2.1.0.js" ></script>
+		<script type="text/javascript">
+			$("input").on("input propatechange",function(){
+				var aa=$(this).val();
+				$("div").css("-webkit-transform","scale("+aa+","+aa+")");
+				console.log(aa);
+			})
+		</script>
+	</body>
+</html>

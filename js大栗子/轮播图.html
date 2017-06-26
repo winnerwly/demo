@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			.box {
+				width: 520px;
+				height: 280px;
+				border: solid 1px gray;
+				position: relative;
+				margin: 50px auto;
+			}
+			
+			.box .images {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				width: inherit;
+				height: inherit;
+			}
+			
+			.box .images li {
+				position: absolute;
+				width: inherit;
+				height: inherit;
+				display: none;
+			}
+			
+			.box .images li:first-child {
+				display: block;
+			}
+			
+			.box .images li img {
+				width: inherit;
+				height: inherit;
+			}
+			
+			.box .points {
+				margin: 0px;
+				padding: 0px;
+				list-style: none;
+				position: absolute;
+				bottom: 15px;
+				left: 50%;
+				/*margin-left: -50px;*/
+			}
+			
+			.box .points li {
+				width: 15px;
+				height: 15px;
+				background-color: gray;
+				border-radius: 50%;
+				float: left;
+				margin: 5px;
+			}
+			
+			.box .points li.active {
+				background-color: orangered;
+			}
+			.box .prev,.box .next{
+				width: 40px;
+				height: 50px;				
+				font-size: 50px;
+				background-color: rgba(0,0,0,0.4);
+				position: absolute;
+				top:115px;
+				color: white;
+				display: none;
+			}
+			.box:hover .prev,.box:hover .next{
+				display: block;
+			}
+			.box .prev{
+				left: 0;
+			}
+			.box .next{
+				right: 0;
+			}
+			.box .prev span{
+				position: relative;
+				right: 20px;
+				top: -3px;
+			}
+			.box .next span{
+				position: relative;
+				left: 10px;
+					top: -3px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="box">
+			<ul class="images">
+				<li><img src="img/1.jpg"></li>
+				<li><img src="img/2.jpg"></li>
+				<li><img src="img/3.jpg"></li>
+				<li><img src="img/4.jpg"></li>
+				<li><img src="img/5.jpg"></li>
+			</ul>
+			<ul class="points"></ul>
+			<div class="prev"><span>〈</span></div>
+			<div class="next"><span>〉</span></div>
+		</div>
+
+		<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var images = $(".box .images li"); //获取的是所有的li也就是所有的图片
+				var imageCount = images.length; //图片的数量
+				var index = 0; //图片显示索引。
+				// 动态增加 状态显示的点点
+				for(var i = 0; i < imageCount; i++) {
+					$(".box .points").append("<li data-index='" + i + "'></li>");
+				}
+				// 给以做外边距，让其居中
+				$(".box .points").css("margin-left", "-" + ($(".box .points").width() / 2) + "px");
+				var points = $(".box .points li"); //获取所有的点
+				points.eq(0).addClass("active");
+				var timer = setInterval(function() {
+					images.eq(index).fadeOut(500); //前一张淡出
+					index = (index + 1) % imageCount; //下一张
+					images.eq(index).fadeIn(500); //下一张淡入
+					//先从整体上移除所有的active这个类，然后指定某一个添加上active
+					points.removeClass("active").eq(index).addClass("active");
+				}, 2000);
+				
+				// 悬停停止定时器自动播放，移开继续播放
+				$(".box").hover(function() {
+					//进来
+					clearInterval(timer);
+				}, function() {
+					timer = setInterval(function() {
+						images.eq(index).fadeOut(500); //前一张淡出
+						index = (index + 1) % imageCount; //下一张
+						images.eq(index).fadeIn(500); //下一张淡入
+						//先从整体上移除所有的active这个类，然后指定某一个添加上activefff
+						points.removeClass("active").eq(index).addClass("active");
+					}, 2000);
+				});
+
+				// 给状态点添加上一个hover事件，悬停的时候切换到当前这个点所表示的图片上来。
+				points.hover(function() {
+					var currentIndex = parseInt($(this).attr("data-index")); //获取当前索引值。
+					points.removeClass("active").eq(currentIndex).addClass("active");
+					$(":animated").stop(true, true);
+					images.eq(index).fadeOut(200); //前一张淡出
+					index = currentIndex;
+					images.eq(index).fadeIn(200); //下一张淡入
+				});
+				
+				
+				//下一张
+				$(".box .next").click(function(){
+					//停止所有的动画
+					$(":animated").stop(true, true);
+					images.eq(index).fadeOut(200); //前一张淡出
+					index = (index + 1) % imageCount; //下一张
+					images.eq(index).fadeIn(200); //下一张淡入
+					points.removeClass("active").eq(index).addClass("active");
+				});
+				
+				//上一张
+				$(".box .prev").click(function(){
+					//停止所有的动画
+					$(":animated").stop(true, true);
+					images.eq(index).fadeOut(200); //前一张淡出
+					index = (index + imageCount - 1) % imageCount; //上一张
+					images.eq(index).fadeIn(200); //下一张淡入
+					points.removeClass("active").eq(index).addClass("active");
+				});
+
+			});
+		</script>
+	</body>
+
+</html>

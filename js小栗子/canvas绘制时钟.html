@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				/*border: 1px #CCCCCC solid;*/
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="" width="400" height="400"></canvas>
+		<script type="text/javascript">
+			var canvas=document.querySelector("canvas");
+			canvas.width=400;
+			canvas.height=400;
+//			console.log(canvas);
+			var ctx=canvas.getContext("2d");
+			//设置原点在（200,200）
+			ctx.translate(200,200);
+			
+function clock(){			
+			ctx.beginPath();
+			ctx.arc(0,0,197,0,Math.PI*2,true);
+			ctx.lineWidth=6;
+			ctx.strokeStyle="#222";
+			ctx.stroke();
+			
+			ctx.beginPath();
+			for (var i=0;i<60;i++) {
+				if (i%5==0) {
+					ctx.fillStyle="#333";
+					ctx.font="100 14px '微软雅黑'";
+					ctx.textAlign="center";
+					ctx.textBaseline="middle";
+					num=(i/5+3)%12==0?12:(i/5+3)%12;
+					ctx.fillText(num,Math.cos(Math.PI/180*6*i)*180,Math.sin(Math.PI/180*6*i)*180);
+				} else{
+					
+					ctx.fillStyle="red";
+					ctx.arc(Math.cos(Math.PI/180*6*i)*180,Math.sin(Math.PI/180*6*i)*180,4,0,Math.PI*2,true);
+					ctx.fill()
+					ctx.beginPath();
+				}
+			};
+			
+			h=new Date().getHours();
+			m=new Date().getMinutes();
+			s=new Date().getSeconds();
+			
+			//秒针
+			ctx.save(),
+			ctx.beginPath();
+			ctx.rotate(Math.PI/180*6*s);
+			ctx.lineTo(0,-170);
+			ctx.lineTo(0,17);
+			ctx.lineWidth=3;
+			ctx.lineCap="round";
+			ctx.strokeStyle="#FF0000";
+			ctx.stroke();
+			ctx.restore();
+			
+			
+			//分针
+			ctx.save(),
+			ctx.beginPath();
+			ctx.rotate(Math.PI/180*(6*m+s/10));
+			ctx.lineTo(0,-140);
+			ctx.lineTo(0,24);
+			ctx.lineWidth=5;
+			ctx.lineCap="round";
+			ctx.strokeStyle="#00ff00";
+			ctx.stroke();
+			ctx.restore();
+			
+			
+			//时针
+			ctx.save(),
+			ctx.beginPath();
+			ctx.rotate(Math.PI/180*(30*h+m/2));
+			ctx.lineTo(0,-110);
+			ctx.lineTo(0,11);
+			ctx.lineWidth=7;
+			ctx.lineCap="round";
+			ctx.strokeStyle="#0000ff";
+			ctx.stroke();
+			ctx.restore();
+			
+			ctx.beginPath();
+			ctx.arc(0,0,14,0,Math.PI*2);
+			ctx.fillStyle="#FF0000";
+			ctx.fill();
+			
+};
+clock();
+setInterval(function(){
+	ctx.clearRect(-200,-200,400,400);
+	clock();
+},1000);
+		</script>
+	</body>
+</html>

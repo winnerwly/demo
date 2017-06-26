@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.image{
+				width: 300px;
+				height: 300px;
+				position: relative;
+			}
+			.image img{
+				width: inherit;
+				height: inherit;
+			}
+			
+			.image .box{
+				width: 80px;
+				height: 80px;
+				position: absolute;
+				background-color: blue;
+				opacity: 0.4;
+				bottom: 0;
+				left: 0;
+				display: none;
+			}
+			.image:hover .box{
+				display: block;
+			}
+			
+			.image .box-2{
+				width: 300px;
+				height: 300px;
+				border: solid 1px red;
+				position: absolute;
+				left: 300px;
+				top: 0px;
+				display: none;
+				background-size: 1125px 1125px;
+				background-repeat: no-repeat;
+			}
+			
+		</style>
+	</head>
+	<body>
+		
+		<div class="image">
+			<img src="img/1.jpg">
+			<div class="box"></div>
+			<div class="box-2"></div>
+		</div>
+		
+		<script type="text/javascript" src="js/eventHandler.js" ></script>
+		
+		<script type="text/javascript">
+			var image = document.getElementsByClassName("image")[0];
+			var box = document.getElementsByClassName("box")[0];
+			var box2 = document.getElementsByClassName("box-2")[0];
+			
+			eventHandler.addEvent(image,"mouseenter",function(e){
+				var imgSrc = image.getElementsByTagName("img")[0].getAttribute("src");
+				box2.style.display = "block";
+				box2.style.backgroundImage = "url("+imgSrc+")";
+			});
+			
+			eventHandler.addEvent(image,"mouseleave",function(){
+				box2.style.display = "none";
+			});
+			eventHandler.addEvent(image,"mousemove",function(e){
+				var event = eventHandler.getEvent(e);
+				var x = event.clientX - this.offsetLeft;
+				var y = event.clientY - this.offsetTop;
+				
+				x = x-40;
+				y = y-40;
+				// 防止 越界
+				x = x<0?0:x;
+				y = y<0?0:y;
+				x = x>220?220:x;
+				y = y>220?220:y;
+				box.style.left = x+"px";
+				box.style.top =  y+"px";
+				box2.style.backgroundPosition = -3.75*x+"px "+(-3.75*y)+"px";
+				
+			});
+			
+			
+		</script>
+		
+	</body>
+</html>

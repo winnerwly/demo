@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.box{
+				width: 100%;
+				height: 300px;
+				background-color: red;
+			}
+			
+			
+			body{
+				background-color: red;
+			}
+			
+			.wrap{
+				width: 100%;
+				max-width: 1024px;
+				margin: 0 auto;
+			}
+			
+			.fl{
+				float: left;
+			}
+			.fr{
+				float: right;
+			}
+			.clear:after{
+				content: "";
+				display: block;
+				clear: both;
+			}
+			/*  子元素选择器 
+			 *  子元素选择器 只选中儿子 ，后代选择器会选中所有符合的子子孙孙
+			 * */
+			.wrap > *{
+				width: 100%;
+				margin-bottom: 20px;
+			}
+			
+			nav{
+				
+				
+			}
+			nav .item{
+				height: 100px;
+				width: 48%;
+				background-color: grey;
+			}
+			header{
+				height: 200px;
+				background-color: gainsboro;
+			}
+			article{
+				
+			}
+			article .item{
+				height: 100px;
+				width: 30%;
+				margin-right: 5%;
+				background-color: orangered;
+			}
+			article .item:last-child{
+				margin-right: 0;
+			}
+			
+			footer{
+				
+				
+			}
+			footer .item{
+				
+				height: 50px;
+				width: 22%;
+				margin-right: 4%;
+				background-color: blue;
+			}
+			footer .item:last-child{
+				margin-right: 0;
+			}
+			
+			
+			/* 以上都是默认的样式 */
+			
+			/**  选中一个屏幕宽度的范围    */ 
+			/*@media only screen and (min-width: 100px) and (max-width: 640px) {
+				body{
+					background-color: green;
+				}
+			}*/
+			
+			/* 中等屏幕  平板尺寸 */
+			@media only screen and (max-width:980px) {
+				body{
+					background-color: green;
+				}
+				
+				nav .item{
+					height: 50px;
+					width: 100%;
+					margin: 0;
+					margin-bottom: 10px;
+				}
+				 header{
+				 	height: 150px;
+				 }
+				article .item{
+					height: 60px;
+					width: 100%;
+					margin-right: 0;
+					margin-bottom: 10px;
+				}
+				
+				footer .item{
+					width: 48%;
+					margin-bottom: 10px;
+				}
+				
+				footer .item:nth-child(2){
+					float: right;
+					margin-right: 0;
+				}
+			}
+			
+			/* 第一320 的手机屏幕 */
+			
+			@media only screen and (max-width:414px) {
+				body{
+					background-color: yellow;
+				}
+				footer .item{
+					width: 100%;
+					margin-right: 0;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<nav class="clear">
+				<div class="item fl"></div>
+				<div class="item fr"></div>
+			</nav>
+			<header class="clear">
+				<div class="item"></div>
+			</header>
+			<article class="clear">
+				<section class="item fl"></section>
+				<section class="item fl"></section>
+				<section class="item fr"></section>
+			</article>
+			<footer class="clear">
+				<div class="item fl"></div>
+				<div class="item fl"></div>
+				<div class="item fl"></div>
+				<div class="item fr"></div>
+			</footer>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			h1{
+				text-align: center;
+				font-size: 150px;
+				margin: 150px 0;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>
+			<span>00</span>
+			<span>:</span>
+			<span>00</span>
+			<span>:</span>
+			<span>00</span>
+		</h1>
+		<script type="text/javascript">
+			function atime () {
+				var time=new Date();
+			h=time.getHours();
+			h=h<10?'0'+h:h;
+			m=time.getMinutes();
+			m=m<10?'0'+m:m;
+			
+			s=time.getSeconds();
+			s=s<10?'0'+s:s;
+			
+			var span=document.getElementsByTagName('span');
+				span[0].innerText=h;
+				span[2].innerText=m;
+				span[4].innerText=s;
+			};
+			atime();
+			setInterval(function (){atime()},1000);
+			
+			
+			
+		</script>
+	</body>
+</html>

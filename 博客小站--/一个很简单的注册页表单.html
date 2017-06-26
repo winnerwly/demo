@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>注册页</title>
+		<style type="text/css">
+			tr td:first-child{text-align: right;}
+			tr{height: 40px;}
+			tr:last-child{height: 70px;}
+		</style>
+	</head>
+	<body>
+		<div style="background: #CCCCCC;margin-top: 70px;">
+		<h1 align="center">账号注册</h1>
+		<form>
+			<table align="center" style="text-align:left">
+				<tr>
+					<td>用户名：</td>
+					<td>
+						<input type="text" name="username" id="username" value="" placeholder="请输入用户名" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						密码：
+					</td>
+					<td>
+						<input type="password" name="password" id="password" value="" placeholder="请输入密码"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						邮箱：
+					</td>
+					<td>
+						<input type="email" name="email" id="email" value="" placeholder="请输入email"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						性别：
+					</td>
+					<td>
+						<label><input type="radio" name="sex" value="boy"/>男</label>
+						<label><input type="radio" name="sex" value="girl"/>女</label>
+					</td>
+				</tr>
+				<tr>
+					<td>生日：</td>
+					<td>
+						<input type="time" name="time" />
+					</td>
+				</tr>
+				<tr>
+					<td>年龄：</td>
+					<td>
+						<input type="number" name="nianling" id="nianling" value="18" min="1" max="300" />岁
+					</td>
+				</tr>
+				<tr>
+					<td>爱好：</td>
+					<td>
+						<label><input type="checkbox" name="love" value="kanshu" />看书</label>
+						<label><input type="checkbox" name="love" value="kanshu" />看电影</label>
+						<label><input type="checkbox" name="love" value="kanshu" />打球</label>
+						<label><input type="checkbox" name="love" value="kanshu" />跑步</label>
+					</td>
+				</tr>
+				<tr>
+					<td>喜欢的颜色：</td>
+					<td>
+						<input type="color" value="" />
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align: center;">
+						<input type="submit" value="提交"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="reset" value="重置"/>
+					</td>
+				</tr>
+			</table>
+		</form>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				width: 200px;
+				height: 200px;
+				background-color: red;
+				position: absolute;
+				margin-top: 40px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<button>开始运动</button>
+		<div></div>
+		<script type="text/javascript">
+			var oBut = document.querySelector("button");
+			var oDiv = document.querySelector("div");
+			
+			//先预定义一个timer,不添加发生点击事件中的清除timer是timer is not defined;
+			var timer=null;
+			
+
+			oBut.addEventListener("click", function(){
+				move(10,30,800 );
+			});
+			
+			
+			function move(speed,s,left) {
+				clearInterval(timer);
+				timer = setInterval(function() {
+
+					if(oDiv.offsetLeft >= left) {
+						clearInterval(timer);
+					} else {
+						oDiv.style.left = oDiv.offsetLeft + speed + 'px';
+					}
+				}, s);
+
+			};
+
+			//			function move(){};
+		</script>
+	</body>
+
+</html>

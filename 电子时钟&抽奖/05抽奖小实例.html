@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 510px;
+				height: 510px;
+				position: relative;
+				margin: 50px auto;
+			}
+			img:first-child{
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				display: block;
+			}
+			img:last-child{
+				position: absolute;
+				top: 149px;
+				left: 149px;
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery-2.1.0.js" ></script>
+		<script type="text/javascript" src="js/jquery.easing.min.js" ></script>
+		<script type="text/javascript" src="js/jquery.rotate.min.js" ></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var img1=$('img:first-child');
+				var img2=$('img:last-child');
+				
+				img2.click(function(){
+					//获取一个0到1之间的随机数
+					index00=Math.random();
+					//将获取的随机数乘以360并取整
+					index=Math.round(index00*360);
+					//定义img1的旋转动画
+					img1.rotate({
+						angle:0, // 起始角度
+						animateTo:1800+index,//目标角度
+						duration:7000,// 动画时长
+						easing:$.easing.easeOutCirc,// 动画的效果
+						callback:function(){       //定义一个动画结束是执行的回调函数
+							if (180<index&&index<225) {
+								alert('恭喜你！你中了一等奖')
+							} else if (90<index&&index<135) {
+								alert('恭喜你！你中了二等奖')
+							
+							}else if (index>315&&index<360) {
+								alert('恭喜你！你中了三等奖')
+							
+							}else{
+								alert('你只能再接再厉了555')
+							}
+						}// 回调函数
+					});
+				})
+				
+				
+				
+			});
+		</script>
+	</head>
+	<body>
+		<div>
+			<img src="img/ly-plate.png"/>
+			<img src="img/rotate-static.png"/>
+		</div>
+	</body>
+</html>

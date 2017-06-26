@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+	</head>
+
+	<body>
+		<div class="game">
+			<div class="ll1">
+				<img src="img/tp-2.jpg" />
+			</div>
+			<div class="ll2">
+				<div class="box"></div>
+				<div class="box"></div>
+				<div class="box"></div>
+				<div class="box"></div>
+
+				<div class="box"></div>
+				<div class="box"></div>
+				<div class="box"></div>
+				<div class="box"></div>
+
+				<div class="box"></div>
+				<div class="box"></div>
+				<div class="box"></div>
+				<div class="box"></div>
+
+				<div class="box"></div>
+				<div class="box"></div>
+				<div class="box"></div>
+				<div class="box"></div>
+
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				//第一步
+				var arr = [14, 1, 12, 2,0, 11, 3,  13, 15, 4, 5, 6, 7, 8, 9, 10];
+//				var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0]
+				var arraa = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0]
+//				alert(arr.toString() == arraa.toString());
+				var box = $(".ll2 .box");
+				for(var i = 0; i < 16; i++) {
+					box.eq(i).addClass("box-" + arr[i]);
+				};
+				//第二步
+				$(document).keydown(function(e) {
+					var keyCode = e.keyCode;
+					$(":animated").stop(true, true);
+					switch(keyCode) {
+						case 37:
+							left();
+							break;
+						case 38:
+							up();
+							break;
+						case 39:
+							right();
+							break;
+						case 40:
+							down();
+							break;
+						default:
+							break;
+					}
+				});
+				//第三步
+				function left() {
+					for(var i = 0; i < 16; i++) {
+						if(arr[i] == 0) {
+							if(i % 4 == 3) {
+								return
+							} else {
+								var tmp = i;
+								box.eq(i + 1).animate({
+									right: "200px"
+								}, 200, function() {
+									box.eq(tmp).removeClass("box-0").addClass("box-" + arr[tmp + 1]);
+									box.eq(tmp + 1).removeClass("box-" + arr[tmp + 1]).addClass("box-0").attr("style", "");
+									tmparr = arr[tmp + 1];
+									arr[tmp + 1] = arr[tmp];
+									arr[tmp] = tmparr;
+
+									if(arr.toString() == arraa.toString()) {
+										alert("恭喜你你赢了,快点去找黑色调要红包112233")
+									};
+								})
+							}
+						}
+					}
+				};
+
+				function right() {
+					for(var i = 0; i < 16; i++) {
+						if(arr[i] == 0) {
+							if(i % 4 == 0) {
+								return
+							} else {
+								var tmp = i;
+								box.eq(i - 1).animate({
+									left: "200px"
+								}, 200, function() {
+									box.eq(tmp).removeClass("box-0").addClass("box-" + arr[tmp - 1]);
+									box.eq(tmp - 1).removeClass("box-" + arr[tmp - 1]).addClass("box-0").attr("style", "");
+									tmparr = arr[tmp - 1];
+									arr[tmp - 1] = arr[tmp];
+									arr[tmp] = tmparr;
+
+									if(arr.toString() == arraa.toString()) {
+										alert("恭喜你你赢了,快点去找黑色调要红包112233")
+									};
+								})
+							}
+						}
+					}
+				};
+
+				function up() {
+					for(var i = 0; i < 16; i++) {
+						if(arr[i] == 0) {
+							if(i > 11) {
+								return
+							} else {
+								var tmp = i;
+								box.eq(i + 4).animate({
+									bottom: "125px"
+								}, 200, function() {
+									box.eq(tmp).removeClass("box-0").addClass("box-" + arr[tmp + 4]);
+									box.eq(tmp + 4).removeClass("box-" + arr[tmp + 4]).addClass("box-0").attr("style", "");
+									tmparr = arr[tmp + 4];
+									arr[tmp + 4] = arr[tmp];
+									arr[tmp] = tmparr;
+									if(arr.toString() == arraa.toString()) {
+										alert("恭喜你你赢了,快点去找黑色调要红包112233")
+									};
+								})
+							}
+						}
+					}
+				};
+
+				function down() {
+					for(var i = 0; i < 16; i++) {
+						if(arr[i] == 0) {
+							if(i < 4) {
+								return
+							} else {
+								var tmp = i;
+								box.eq(i - 4).animate({
+									top: "125px"
+								}, 200, function() {
+									box.eq(tmp).removeClass("box-0").addClass("box-" + arr[tmp - 4]);
+									box.eq(tmp - 4).removeClass("box-" + arr[tmp - 4]).addClass("box-0").attr("style", "");
+									tmparr = arr[tmp - 4];
+									arr[tmp - 4] = arr[tmp];
+									arr[tmp] = tmparr;
+									
+									if(arr.toString() == arraa.toString()) {
+										alert("恭喜你你赢了,快点去找黑色调要红包112233")
+									};
+
+									
+								})
+							}
+						}
+					}
+				};
+
+			});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				width: 600px;
+				height: 400px;
+				border: solid 1px red;
+				background-color: black;
+				display: block;
+				margin: 50px auto;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="400" height="400"></canvas>
+		<script>
+			// 获取canvas画布
+			var canvas = document.getElementById("canvas");
+			//设置画布的单位 大小
+			canvas.width = 600;
+			canvas.height = 400;
+			// 获取绘图上下文
+			var context = canvas.getContext("2d");
+		
+			function drawStar(x,y,r1,r2,d){
+				context.beginPath();
+				for(var i = 0 ; i < 5; i++){
+					context.lineTo(Math.cos((18+i*72+d)/180*Math.PI)*r2+x,  -1*Math.sin((18+i*72+d)/180*Math.PI)*r2+y);
+					context.lineTo(Math.cos((54+i*72+d)/180*Math.PI)*r1+x,  -1*Math.sin((54+i*72+d)/180*Math.PI)*r1+y);
+				}
+				context.closePath();
+				context.fillStyle = "yellow";
+				context.fill();
+			};
+			
+			
+			arr=[];
+			for (var i=0;i<100;i++) {
+				var x =Math.round(  Math.random()*canvas.width);
+				var y =Math.round(  Math.random()*canvas.height);
+				var r1 =Math.round( Math.random()*10);
+				var r2 = r1*2;
+				var d =Math.round( Math.random()*360);
+				arr[i]=[x,y,r1,r2,d];
+			};
+			//console.log(arr);
+			if (localStorage.getItem("user")) {
+				var userNew = localStorage.getItem("user");
+			var obj = JSON.parse(userNew);
+			} else{
+				var str = JSON.stringify(arr);
+			localStorage.setItem("user",str);
+			var userNew = localStorage.getItem("user");
+			var obj = JSON.parse(userNew);
+			};
+			
+			for (var j=0;j<100;j++) {
+				drawStar(obj[j][0],obj[j][1],obj[j][2],obj[j][3],obj[j][4]);
+			};
+			
+			
+
+			//alert(obj[1][1])
+			
+		</script>
+	</body>
+</html>
